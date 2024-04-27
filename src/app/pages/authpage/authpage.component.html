@@ -1,0 +1,28 @@
+
+<div class="bg-img">
+    <div class="py-5 bg rounded-3 container m-auto w-50 mt-5">
+        <h2 class="text-brown text-center pt-1">Kanban Board</h2>
+    
+        <hr class="text-brown">
+        <div class="row pt-3 w-85 m-auto justify-content-center">
+          <p class="col-2  text-brown" (click)="showlogin()"  >
+            Login
+          </p>
+          <p class="col-4 text-brown" (click)="showregister()" >
+            Create new Account
+          </p>
+          
+        </div>
+        <hr class="text-brown">
+        <div *ngIf="login" >
+           <app-login></app-login>
+        </div>
+        <div *ngIf="register" >
+            <app-register>
+    
+            </app-register>
+        </div>
+        
+    </div>
+      
+    </div>

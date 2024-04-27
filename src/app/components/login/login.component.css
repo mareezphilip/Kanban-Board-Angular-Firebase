@@ -1,0 +1,34 @@
+.bg-img2{
+    min-height: 100vh;
+    padding-top: 6rem;
+   
+     
+     background-image: url('/assets/images/5.jpg');
+    background-position: center;
+    background-size: cover;
+}
+.bg{
+    background: rgba(0, 0, 0, 0.236) !important;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.6) !important;
+}
+.log{
+    background-color:rgb(105 78 43) ;
+    color: white;
+}
+.log:hover{
+    background-color: transparent;
+  
+    border: solid 1px rgb(105 78 43) ;
+    color: rgb(57, 46, 26);
+}
+.w-85{
+width: 87%;
+}
+
+
+.no-outline:focus {
+   
+    outline-color: rgba(57, 46, 26, 0.892) !important;
+    outline-style: solid !important;
+    outline-width: 1px !important;
+  }

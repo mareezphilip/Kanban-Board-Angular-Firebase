@@ -1,0 +1,13 @@
+<form  #Form="ngForm" (ngSubmit)="onSubmit(Form)">
+    <div class="mb-3  w-85 m-auto ">
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" [(ngModel)]="loginForm.email" class="
+      no-outline w-100 rounded-2 py-1"  required>
+    </div>
+    <div  class="mb-3 w-85 m-auto">
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" [(ngModel)]="loginForm.password" class=" no-outline w-100 rounded-2 py-1
+      " required>
+    </div>
+    <button type="submit" class="btn  log px-4 ms-5 ">Login</button>
+  </form>

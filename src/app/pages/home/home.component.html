@@ -1,0 +1,61 @@
+
+
+<div class="bg-img">
+<div class="container">
+  <app-task></app-task>
+
+
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn  log px-4 ms-5 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Add Task
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form  #Form="ngForm" (ngSubmit)="onSubmit(Form)">
+          <div class="mb-3  w-85 m-auto ">
+            <label for="email">Title:</label>
+            <input type="text" name="title" id="title" [(ngModel)]="task.title" class="
+            no-outline w-100 rounded-2 py-1"  required>
+          </div>
+          <div  class="mb-3 w-85 m-auto">
+            <label for="password">description</label>
+            <input type="description" name="description" id="description" [(ngModel)]="task.description" class=" no-outline w-100 rounded-2 py-1
+            " required>
+          </div>
+
+          <div class="mb-3  w-85 m-auto ">
+            <label for="email">due date:</label>
+            <input type="text" name="duedate" id="duedate" [(ngModel)]="task.duedate" class="
+            no-outline w-100 rounded-2 py-1"  required>
+          </div>
+
+         
+          <button type="submit" class="btn  log px-4 ms-5 "> Add </button>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+  
+</div>
+
+
+<!-- </div> -->

@@ -1,0 +1,70 @@
+
+
+<div  class="container py-10"  >
+    
+
+    <div class="row justify-content-around">
+        <div class="col-sm-12 col-md-5 col-lg-3 my-sm-2 my-md-0 my-lg-0  bg" (dragover)="ondragover($event)" (drop)="ondrop($event,'To Do')">
+            <h3 class="my-3 p-2 text-white"> To Do </h3>
+
+           <div class="my-3"  *ngFor="let task of filtertasks('To Do') "  >
+               
+               <div   class="card px-2" (dragstart)="ondragstart(task)" draggable="true" routerLink="/tasks/{{task.taskid}}">
+               <div >
+               
+                    <h4 class="text-secondary "> {{task.data.title}}  </h4> 
+                    
+               
+                
+               </div>
+               <div class ="data">
+                   <p class="statu text-secondary"> {{task.data.stage}}</p>
+                   <!-- <P class="percentage"> {{deal.probability_status}} </P> -->
+               </div>
+              
+           
+               <p class="birthdate text-secondary"><i class="fa-solid fa-calendar-days fa-xs" style="color: #bbc2ce;"></i>  {{task.data.duedate}}</p>
+           
+           </div>
+           </div>
+        </div>
+        <div class="col-sm-12 col-md-5 col-lg-3 bg mx-lg-3  my-sm-3 my-md-0 mx-md-0  my-lg-0" (dragover)="ondragover($event)" (drop)="ondrop($event, 'in progress')">
+           <h3 class="my-3 p-2 text-white">In Progress </h3>
+            <div class="my-3" draggable="true" *ngFor="let task of filtertasks('in progress') " (dragstart)="ondragstart(task)"  >
+               <div   class="card" routerLink="/tasks/{{task.taskid}}">
+               <div><h4 class="text-secondary"> {{task.data.title}}  </h4> 
+               </div>
+               <div class ="data">
+                   <p class="statu text-secondary"> {{task.data.stage}}</p>
+                   <!-- <P class="percentage"> {{deal.probability_status}} </P> -->
+               </div>
+              
+           
+               <p class="birthdate text-secondary"><i class="fa-solid fa-calendar-days fa-xs" style="color: #bbc2ce;"></i>  {{task.data.duedate}}</p>
+           
+           </div>
+           </div>
+        </div>
+        <div class="col-sm-12 col-md-5 col-lg-3 my-sm-3 my-md-3 my-lg-0 bg" (dragover)="ondragover($event)" (drop)="ondrop($event, 'Done')"> 
+            <h3 class="my-3 p-2 text-white">Done </h3>
+            <div class="my-3" draggable="true" *ngFor="let task of filtertasks('Done') " (dragstart)="ondragstart(task)"  >
+               <div  class="card" routerLink="/tasks/{{task.taskid}}">
+               <div><h4 class="text-secondary"> {{task.data.title}}  </h4> 
+               </div>
+               <div class ="data">
+                   <p class="statu text-secondary"> {{task.data.stage}}</p>
+                   <!-- <P class="percentage"> {{deal.probability_status}} </P> -->
+               </div>
+              
+           
+               <p class="birthdate text-secondary"><i class="fa-solid fa-calendar-days fa-xs" style="color: #bbc2ce;"></i>  {{task.data.duedate}}</p>
+           
+           </div>
+           </div>
+        </div>
+       </div>
+       
+  
+
+     
+</div>

@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-color py-3">
+    <div class="container">
+      <a class="navbar-brand" class="w-10 "  ><i class="fa-solid fa-mug-hot fa-2xl" style="color: #f7f7f7;"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+          <li class="nav-item ">
+            <a class="nav-link active fs-5 text-white" aria-current="page" routerLinkActive="text-white" routerLink= "/home" [routerLinkActiveOptions]="{'exact' :  true}">Home</a>
+          </li>
+          
+          
+        
+          
+        </ul>
+        <i class="fa-solid fa-cart-shopping fs-3 me-3" style="color: white" routerLink="cart"></i>
+        <div class="nav-item  me-3" *ngIf="service.islogin">
+          <a class="nav-link fs-5 " routerLink="myprofile" routerLinkActive="" >
+           <i class="fa-solid fa-user fa-lg  me-3 rounded-circle bg-user" style="color:#dddad5"></i>
+          </a>
+        </div>
+        <button class="Logout-btn px-4 py-2  text-white fs-6" (click)="handlelogout()" *ngIf="service.islogin"> Log Out</button>
+        <button class="Logout-btn px-4 py-2  text-white fs-6" *ngIf="!service.islogin" routerLink="auth"  > Log In</button>
+
+    
+      </div>
+    </div>
+  </nav>
+ 

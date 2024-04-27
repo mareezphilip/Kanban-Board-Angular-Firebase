@@ -1,0 +1,17 @@
+.bg-img{
+    min-height: 100vh;
+    padding-top: 6rem;
+   
+     
+     background-image: url('/assets/images/5.jpg');
+    background-position: center;
+    background-size: cover;
+}
+.bg{
+    background: rgba(0, 0, 0, 0.236) !important;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.6) !important;
+}
+
+.w-85{
+width: 87%;
+}
