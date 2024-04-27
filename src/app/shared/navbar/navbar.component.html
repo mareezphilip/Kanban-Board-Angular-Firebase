@@ -14,14 +14,9 @@
         
           
         </ul>
-        <i class="fa-solid fa-cart-shopping fs-3 me-3" style="color: white" routerLink="cart"></i>
-        <div class="nav-item  me-3" *ngIf="service.islogin">
-          <a class="nav-link fs-5 " routerLink="myprofile" routerLinkActive="" >
-           <i class="fa-solid fa-user fa-lg  me-3 rounded-circle bg-user" style="color:#dddad5"></i>
-          </a>
-        </div>
+        
         <button class="Logout-btn px-4 py-2  text-white fs-6" (click)="handlelogout()" *ngIf="service.islogin"> Log Out</button>
-        <button class="Logout-btn px-4 py-2  text-white fs-6" *ngIf="!service.islogin" routerLink="auth"  > Log In</button>
+        <button class="Logout-btn px-4 py-2  text-white fs-6" *ngIf="!service.islogin" routerLink=''  > Log In</button>
 
     
       </div>

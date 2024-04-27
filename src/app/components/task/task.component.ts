@@ -2,6 +2,8 @@ import { Component, Input , OnChanges} from '@angular/core';
 import { GlobalserviceService } from 'src/app/services/globalservice.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { retry } from 'rxjs';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -18,7 +20,7 @@ tasks: any;
 taskarr:any[] =[]
 filterdtasks  :any =[]
 droppedItems: string[] = [];
-constructor(private service:GlobalserviceService){}
+constructor(private service:GlobalserviceService , private router:Router , private location: Location){}
 
 
   dummy =0
@@ -59,20 +61,7 @@ constructor(private service:GlobalserviceService){}
  
  }
 
- drop(event: CdkDragDrop<any[]>) {
-  if (event.previousContainer === event.container) {
-    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    
-  } else {
-    transferArrayItem(
-      event.previousContainer.data,
-      event.container.data,
-      event.previousIndex,
-      event.currentIndex
-    );
-    this.dummy++;
-  }
-}
+
 
 ondrop(event:any , stage:any){
 console.log("on drop")
@@ -82,12 +71,23 @@ const record = this.taskarr.find(t=>t.taskid == this.currenttask.taskid)
 if(record != undefined){
   const recordId = this.currenttask.taskid
   const newData={...this.currenttask.data , stage}
-  this.service.updateTask(recordId,newData)
+  if(this.service.islogin){
+    this.service.updateTask(recordId,newData)
   
-  window.location.reload()
-}
+    this.router.navigateByUrl('home');
+    this.location.go('/home'); // Manually update the browser URL
+    
+    location.reload(); // Reload the page
+    
+    console.log("stage name " , stage)
+  }
+  else{
+    alert("please login to edit data")
+  }
+  }
+ 
 
-console.log("stage name " , stage)
+
 
 }
 ondragover(event:any){
