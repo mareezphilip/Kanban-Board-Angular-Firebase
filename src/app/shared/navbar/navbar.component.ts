@@ -8,19 +8,26 @@ import { GlobalserviceService } from 'src/app/services/globalservice.service';
 })
 export class NavbarComponent {
 
-  constructor(public service:GlobalserviceService){
-
+  login: boolean
+  constructor(public service: GlobalserviceService) {
+    const item = localStorage.getItem('user');
+    if (item) {
+      this.login = true
+    }
+    else {
+      this.login = false
+    }
   }
-  handlelogout(){
-    try{
+  handlelogout() {
+    try {
       this.service.logout()
-      this.service.islogin =false
+      this.service.islogin = false
       localStorage.removeItem('user')
     }
-    catch(e){
+    catch (e) {
       console.log(e)
     }
-  
+
 
   }
 }

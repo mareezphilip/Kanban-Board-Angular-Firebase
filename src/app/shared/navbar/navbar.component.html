@@ -15,8 +15,8 @@
           
         </ul>
         
-        <button class="Logout-btn px-4 py-2  text-white fs-6" (click)="handlelogout()" *ngIf="service.islogin"> Log Out</button>
-        <button class="Logout-btn px-4 py-2  text-white fs-6" *ngIf="!service.islogin" routerLink=''  > Log In</button>
+        <button class="Logout-btn px-4 py-2  text-white fs-6" (click)="handlelogout()" *ngIf="login"> Log Out</button>
+        <button class="Logout-btn px-4 py-2  text-white fs-6" *ngIf="!login" routerLink=''  > Log In</button>
 
     
       </div>
