@@ -60,7 +60,8 @@ constructor(private activate:ActivatedRoute , private service:GlobalserviceServi
     if (event.target.checked) {
       const recordId = this.taskid
       const newData={...this.selectedtask.data , stage:"Done"}
-      if(this.service.islogin){
+      const user = localStorage.getItem("user")
+      if(user){
       this.service.updateTask(recordId,newData)
       this.isCheckboxDisabled = true;
       }else{

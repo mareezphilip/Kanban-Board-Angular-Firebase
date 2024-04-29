@@ -1,9 +1,10 @@
 import { Component, Input , OnChanges} from '@angular/core';
 import { GlobalserviceService } from 'src/app/services/globalservice.service';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+// import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { retry } from 'rxjs';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -20,7 +21,7 @@ tasks: any;
 taskarr:any[] =[]
 filterdtasks  :any =[]
 droppedItems: string[] = [];
-constructor(private service:GlobalserviceService , private router:Router , private location: Location){}
+constructor(private service:GlobalserviceService , private router:Router , private location: Location , private snackBar: MatSnackBar ){}
 
 
   dummy =0
@@ -35,6 +36,13 @@ constructor(private service:GlobalserviceService , private router:Router , priva
       for(let task in this.tasks){
          this.taskarr.push({taskid:task, data:this.tasks[task]})
       }
+      this.service.subscribeToDataChanges().subscribe(data => {
+        // Handle the real-time changes here
+        console.log('Data changed:', data);
+        console.log("data changed")
+        
+        this.snackBar.open('Data changed!', 'Dismiss', { duration: 5000 });
+      });
     }
     catch(e){
       console.log(e)
@@ -71,7 +79,8 @@ const record = this.taskarr.find(t=>t.taskid == this.currenttask.taskid)
 if(record != undefined){
   const recordId = this.currenttask.taskid
   const newData={...this.currenttask.data , stage}
-  if(this.service.islogin){
+  const user = localStorage.getItem('user')
+  if(user){
     this.service.updateTask(recordId,newData)
   
     this.router.navigateByUrl('home');

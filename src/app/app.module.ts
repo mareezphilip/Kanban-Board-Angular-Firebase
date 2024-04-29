@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { OverlayModule } from '@angular/cdk/overlay';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import {DragDropModule}from '@angular/cdk/drag-drop'
 import { AngularFireModule} from '@angular/fire/compat'
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { RegisterComponent } from './components/register/register.component';
@@ -13,9 +13,9 @@ import { AuthpageComponent } from './pages/authpage/authpage.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TaskComponent } from './components/task/task.component';
-import { DragComponent } from './components/drag/drag.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { TaskdetailsComponent } from './pages/taskdetails/taskdetails.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const firebaseConfig = {
@@ -39,7 +39,7 @@ const firebaseConfig = {
     LoginComponent,
     HomeComponent,
     TaskComponent,
-    DragComponent,
+    
     NavbarComponent,
     TaskdetailsComponent,
     
@@ -51,7 +51,13 @@ const firebaseConfig = {
     
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    DragDropModule,
+    MatSnackBarModule,
+    
+    OverlayModule,
+    // MatSnackBarModule
+    // DragDropModule,
+    NoopAnimationsModule,
+    // MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

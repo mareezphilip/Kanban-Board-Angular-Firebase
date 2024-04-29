@@ -3,6 +3,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { getDatabase, ref, push, get, child, update , remove } from "firebase/database";
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 
 
@@ -14,7 +15,7 @@ export class GlobalserviceService {
   islogin: boolean = false
   
   private database: firebase.database.Database;
-  constructor(private afs: AngularFireAuth) {
+  constructor(private afs: AngularFireAuth , private db: AngularFireDatabase) {
     this.database = firebase.database();
     // Initialize Firebase
     const firebaseConfig = {
@@ -142,5 +143,8 @@ export class GlobalserviceService {
       .catch((error) => {
         console.error('Error deleting record:', error);
       });
+  }
+  subscribeToDataChanges() {
+    return this.db.object('path/to/your/data').valueChanges();
   }
 }
