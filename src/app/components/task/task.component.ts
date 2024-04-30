@@ -1,4 +1,4 @@
-import { Component, Input , OnChanges} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { GlobalserviceService } from 'src/app/services/globalservice.service';
 // import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { retry } from 'rxjs';
@@ -81,12 +81,18 @@ if(record != undefined){
   const newData={...this.currenttask.data , stage}
   const user = localStorage.getItem('user')
   if(user){
+    for(var i = 0 ; i< this.taskarr.length ; i++){
+      if(this.taskarr[i].taskid == recordId){
+        this.taskarr[i].data.stage = stage
+      }
+    }
+
     this.service.updateTask(recordId,newData)
   
-    this.router.navigateByUrl('home');
-    this.location.go('/home'); // Manually update the browser URL
+    // this.router.navigateByUrl('home');
+    // this.location.go('/home'); // Manually update the browser URL
     
-    location.reload(); // Reload the page
+    // location.reload(); // Reload the page
     
     console.log("stage name " , stage)
   }
