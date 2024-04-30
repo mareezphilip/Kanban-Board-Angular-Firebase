@@ -36,13 +36,7 @@ constructor(private service:GlobalserviceService , private router:Router , priva
       for(let task in this.tasks){
          this.taskarr.push({taskid:task, data:this.tasks[task]})
       }
-      this.service.subscribeToDataChanges().subscribe(data => {
-        // Handle the real-time changes here
-        console.log('Data changed:', data);
-        console.log("data changed")
-        
-        this.snackBar.open('Data changed!', 'Dismiss', { duration: 5000 });
-      });
+     
     }
     catch(e){
       console.log(e)
@@ -88,6 +82,14 @@ if(record != undefined){
     }
 
     this.service.updateTask(recordId,newData)
+
+    this.service.subscribeToDataChanges().subscribe(data => {
+      // Handle the real-time changes here
+      console.log('Data changed:', data);
+      console.log("data changed")
+      
+      this.snackBar.open('Data changed!', 'Dismiss', { duration: 5000 });
+    });
   
     // this.router.navigateByUrl('home');
     // this.location.go('/home'); // Manually update the browser URL
