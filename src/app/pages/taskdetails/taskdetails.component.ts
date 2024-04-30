@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GlobalserviceService } from 'src/app/services/globalservice.service';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-taskdetails',
   templateUrl: './taskdetails.component.html',
@@ -15,7 +17,7 @@ export class TaskdetailsComponent {
   selectedtask :any
   isCheckboxDisabled = false;
   checked =false
-constructor(private activate:ActivatedRoute , private service:GlobalserviceService){
+constructor(private activate:ActivatedRoute , private service:GlobalserviceService , private snackBar: MatSnackBar){
 
 }
 
@@ -63,7 +65,16 @@ constructor(private activate:ActivatedRoute , private service:GlobalserviceServi
       const user = localStorage.getItem("user")
       if(user){
       this.service.updateTask(recordId,newData)
+
       this.isCheckboxDisabled = true;
+      this.service.subscribeToDataChanges().subscribe(data => {
+        // Handle the real-time changes here
+        console.log('Data changed:', data);
+        console.log("data changed")
+        
+        this.snackBar.open('Data changed!', 'Dismiss', { duration: 5000 });
+      });
+    
       }else{
         alert("please login to edit data")
       }
